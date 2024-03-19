@@ -1,13 +1,14 @@
-TIRA
-================================
-TIRA is a platform for experiments in artificial intelligence that ensures blinded experiments and reproducibility.
+.. include:: ../../README.md
+   :parser: myst_parser.sphinx_
+
 
 .. toctree::
    :maxdepth: 5
    :caption: For Users
    :hidden:
 
-   users/intro
+   users/installation
+   users/client
    users/api
    users/faq
 
@@ -28,9 +29,10 @@ TIRA is a platform for experiments in artificial intelligence that ensures blind
 
    development/index
 
-Indices and tables
-==================
+..
+   Indices and tables
+   ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
