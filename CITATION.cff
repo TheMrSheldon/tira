@@ -4,12 +4,20 @@ title: TIRA
 repository-code: 'https://github.com/tira-io/tira'
 url: 'https://tira.io/'
 license: MIT
+authors:
+  - name: Webis Group
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
 
 preferred-citation:
   type: conference-paper
   title: Continuous Integration for Reproducible Shared Tasks with TIRA.io
   collection-title: Advances in Information Retrieval. 45th European Conference on IR Research (ECIR 2023)
-  location: Dublin, Irland
+  location:
+    name: ECIR 2023
+    city: Dublin
+    country: IE
   year: 2023
   month: 4
   pages: 236--241
@@ -18,7 +26,7 @@ preferred-citation:
     city: Berlin, Heidelberg, New York
   publisher:
     name: Springer
-  doi: doi.org/10.1007/978-3-031-28241-6_20
+  doi: 10.1007/978-3-031-28241-6_20
   url: https://doi.org/10.1007/978-3-031-28241-6_20
   authors:
     - given-names: Maik

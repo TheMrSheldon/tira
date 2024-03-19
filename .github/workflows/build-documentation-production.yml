@@ -15,7 +15,7 @@ jobs:
           sudo apt-get install -y python3-pip
           pip install sphinx furo myst-parser sphinx-toolbox
           pip install pandas pyterrier ir_datasets
-          cd python-client/sphinx
+          cd docs/
           # sphinx-apidoc -o . ../tira
           make doctest
           make html
@@ -23,6 +23,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: python-client/sphinx/_build/html
+          folder: docs/_build/html
           target-folder: ./
           clean-exclude: nightly

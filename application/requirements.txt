@@ -1,5 +1,5 @@
 grpcio==1.53.2
-grpcio-tools==1.36.1
+# grpcio-tools==1.36.1
 protobuf<4.0dev
 pyuwsgi
 Django
@@ -27,3 +27,4 @@ coverage
 coverage-badge
 discourse-client-in-disraptor==0.0.8
 tira>=0.0.97
+django-cors-headers

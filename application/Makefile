@@ -43,11 +43,11 @@ src/tira/static/tira/frontend-vuetify:
 	make vite-build
 
 vite-build:
-	@cd src/tira/frontend-vuetify \
+	@cd ../frontend \
 	&& yarn build
 
 vite-build-light:
-	@cd src/tira/frontend-vuetify \
+	@cd ../frontend \
 	&& yarn build-light
 
 .data-dumps/django-db-dump.zip:
