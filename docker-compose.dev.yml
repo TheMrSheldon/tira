@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  devenv:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    environment:
+      - TIRA_OIDC_WELLKNOWN = "http://auth.tira.local:8080/realms/tira-development/.well-known/openid-configuration"
+    links:
+      - "auth:auth.tira.local"
+    depends_on:
+      - auth
+  auth:
+    image: quay.io/keycloak/keycloak:24.0.1
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_IMPORT: /opt/keycloak/import/tira-dev-realm-export.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./devfiles/tira-dev-realm-export.json:/opt/keycloak/data/import/tira-dev-realm-export.json
+    command:
+      - start-dev
+      - --import-realm

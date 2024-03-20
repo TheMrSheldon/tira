@@ -108,24 +108,6 @@ def host_call(func):
 
 @check_permissions
 @check_resources_exist('json')
-def vm_state(request, vm_id):
-    try:
-        state = TransitionLog.objects.get_or_create(vm_id=vm_id, defaults={'vm_state': 0})[0].vm_state
-    except IntegrityError as e:
-        logger.warning(f"failed to read state for vm {vm_id} with {e}")
-        state = 0
-    return JsonResponse({'status': 0, 'state': state})
-
-
-@check_permissions
-@check_resources_exist('json')
-def vm_running_evaluations(request, vm_id):
-    results = EvaluationLog.objects.filter(vm_id=vm_id)
-    return JsonResponse({'status': 0, 'running_evaluations': True if results else False})
-
-
-@check_permissions
-@check_resources_exist('json')
 def get_running_evaluations(request, vm_id):
     results = EvaluationLog.objects.filter(vm_id=vm_id)
     return JsonResponse({'status': 0, 'running_evaluations': [{"vm_id": r.vm_id, "run_id": r.run_id,
@@ -150,81 +132,6 @@ def upload_group_details(request, context, task_id, vm_id, upload_id):
         return JsonResponse({'status': "1", 'message': f"An unexpected exception occurred: {e}"})
 
     return JsonResponse({'status': 0, "context": context})
-
-
-@check_conditional_permissions(restricted=True)
-@host_call
-def vm_create(request, hostname, vm_id, ova_file):
-    uid = auth.get_user_id(request)
-    host = reroute_host(hostname)
-    return GrpcClient(host).vm_create(vm_id=vm_id, ova_file=ova_file, user_id=uid, hostname=host)
-
-
-@check_permissions
-@check_resources_exist('json')
-@host_call
-def vm_start(request, vm_id):
-    vm = model.get_vm(vm_id)
-    # NOTE vm_id is different from vm.vmName (latter one includes the 01-tira-ubuntu-...
-    return GrpcClient(reroute_host(vm['host'])).vm_start(vm_id=vm_id)
-
-
-@check_permissions
-@check_resources_exist('json')
-@host_call
-def vm_shutdown(request, vm_id):
-    vm = model.get_vm(vm_id)
-    return GrpcClient(reroute_host(vm['host'])).vm_shutdown(vm_id=vm_id)
-
-
-@check_permissions
-@check_resources_exist('json')
-@host_call
-def vm_stop(request, vm_id):
-    vm = model.get_vm(vm_id)
-    return GrpcClient(reroute_host(vm['host'])).vm_stop(vm_id=vm_id)
-
-
-@check_permissions
-@check_resources_exist('json')
-def vm_info(request, vm_id):
-    vm = model.get_vm(vm_id)
-    host = reroute_host(vm['host'])
-    if not host:
-        logger.exception(f"/grpc/{vm_id}/vm-info: connection to {host} failed, because host is empty")
-        return JsonResponse({'status': 'Rejected', 'message': "SERVER_ERROR"}, status=HTTPStatus.INTERNAL_SERVER_ERROR)
-    try:
-        grpc_client = GrpcClient(host)
-        response_vm_info = grpc_client.vm_info(vm_id=vm_id)
-        _ = TransitionLog.objects.update_or_create(vm_id=vm_id, defaults={'vm_state': response_vm_info.state})
-        del grpc_client
-    except RpcError as e:
-        ex_message = "FAILED"
-        try:
-            if e.code() == StatusCode.UNAVAILABLE:  # .code() is implemented by the _channel._InteractiveRpcError
-                logger.exception(f"/grpc/{vm_id}/vm-info: connection to {host} failed with {e}")
-                ex_message = "Host Unavailable"  # This happens if the GRPC Server is not running
-            if e.code() == StatusCode.INVALID_ARGUMENT:  # .code() is implemented by the _channel._InteractiveRpcError
-                ex_message = "VM is archived"  # If there is no VM with the requested name on the host.
-                _ = TransitionLog.objects.update_or_create(vm_id=vm_id, defaults={'vm_state': 8})
-        except Exception as e2:  # There is a RpcError but not an Interactive one. This should not happen
-            logger.exception(f"/grpc/{vm_id}/vm-info: Unexpected Execption occured: {e2}")
-        return JsonResponse({'status': 1, 'message': ex_message}, status=HTTPStatus.INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        logger.exception(f"/grpc/{vm_id}/vm-info: connection to {host} failed with {e}")
-        return JsonResponse({'status': 1, 'message': "SERVER_ERROR"}, status=HTTPStatus.INTERNAL_SERVER_ERROR)
-
-    return JsonResponse({'status': 0, 'context': {
-        "guestOs": response_vm_info.guestOs,
-        "memorySize": response_vm_info.memorySize,
-        "numberOfCpus": response_vm_info.numberOfCpus,
-        "sshPort": response_vm_info.sshPort,
-        "rdpPort": response_vm_info.rdpPort,
-        "host": response_vm_info.host,
-        "sshPortStatus": response_vm_info.sshPortStatus,
-        "rdpPortStatus": response_vm_info.rdpPortStatus,
-        "state": response_vm_info.state,
-    }})
 
 
 # ---------------------------------------------------------------------

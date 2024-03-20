@@ -1,4 +1,23 @@
 <template>
+  <v-app-bar
+      absolute
+      color="#323232"
+      elevate-on-scroll
+      scroll-target="#scrolling-techniques-7"
+    >
+    <v-img
+      class="mr-3"
+      src="https://assets.tira.io/tira-icons/tira-banner-120x360-dark.png"
+      height="40"
+    ></v-img>
+    <v-spacer></v-spacer>
+
+    <!--v-toolbar-items-->
+      <v-btn icon>
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
+    <!--/v-toolbar-items-->
+  </v-app-bar>
   <v-container class="text-center">
     <v-img class="mx-auto" height="300px" max-width="100%" width="300px" src="@/assets/logo.svg"/>
     <section>
