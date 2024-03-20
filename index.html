@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -238,13 +238,112 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="toctree-wrapper compound">
+          <h1 align="center">TIRA</h1>
+<p align="center">
+   <img src="https://github.com/tira-io/tira-branding/raw/master/tira-icons/logo-tira-120x120-transparent.png">
+   <!--h3>Integrated Research Architecture</h3-->
+   <br/>
+   <br/>
+   <a href="https://github.com/tira-io/tira">
+   <img alt="GPL 2.0 License" src="https://img.shields.io/github/license/tira-io/tira.svg"/>
+   </a>
+   <a href="https://github.com/tira-io/tira/releases">
+   <img alt="Current Release" src="https://img.shields.io/github/release/tira-io/tira.svg"/>
+   </a>
+   <a href="https://github.com/tira-io/tira/releases">
+   <img alt="Backend Test Coverage" src="application/test/test-coverage/coverage.svg"/>
+   </a>
+   <a href="https://tira.io">
+   <img alt="Deployment" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fwww.tira.io%2Fapi%2Fv1%2F&query=%24.version&prefix=v.&label=tira.io"/>
+   </a>
+   <br>
+   <a href="https://tira-io.github.io/tira/">Documentation</a> &nbsp;|&nbsp;
+   <a href="./application/">Backend</a> &nbsp;|&nbsp;
+   <a href="./frontend/">Frontend</a> &nbsp;|&nbsp;
+   <a href="./python-client/">API &amp; CLI</a> &nbsp;|&nbsp;
+   <a href="https://webis.de/publications.html?q=tira">Publications</a> &nbsp;|&nbsp;
+   <a href="#citation">Citation</a>
+</p>
+<hr class="docutils" />
+<p>TIRA <strong>I</strong>ntegrated <strong>R</strong>esearch <strong>A</strong>rchitecture is a free and open source research platform designed for hosting and
+partaking in shared tasks of varied nature.</p>
+<section id="i-want-to">
+<h1>I want to…<a class="headerlink" href="#i-want-to" title="Link to this heading">#</a></h1>
+<section id="organize-a-shared-task">
+<h2>… organize a shared task<a class="headerlink" href="#organize-a-shared-task" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
+</section>
+<section id="deploy-my-own-instance">
+<h2>… deploy my own instance<a class="headerlink" href="#deploy-my-own-instance" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
+</section>
+<section id="join-a-shared-task">
+<h2>… join a shared task<a class="headerlink" href="#join-a-shared-task" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
+</section>
+<section id="contribute-bug-reports-feature-requests-code-documentation">
+<h2>… contribute (bug reports, feature requests, code, documentation)<a class="headerlink" href="#contribute-bug-reports-feature-requests-code-documentation" title="Link to this heading">#</a></h2>
+<p>Great! Check out our <a href="">Contribution Guide</a>.</p>
+<hr class="docutils" />
+<!--
+## Setup Your Development Environment
+
+We use [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers) for development. To start your environment, either use Github Codespaces (click on "Code" -> "Codespaces" in Github to open one) as easiest way to get started, or [devpod](https://github.com/loft-sh/devpod) as open source alternative (directly pointing to our Kubernetes or your local docker installation).
+
+Run `make` to get an overview of all commands that will setup a self-contained tira application in your dev environment.
+
+1. Setup the database and compile the vuetify frontend
+   ```bash
+   ~$ make setup
+   ```
+
+2. Start the local environment, point your browser to the specified URL
+   ```bash
+   ~$ make run-develop
+   ```
+
+3. Optionally: To work on real data, initialize your development database from a database dump via
+   ```bash
+   ~$ make import-data-from-dump
+   ```
+   or to work with mock data run:
+    ```bash
+   ~$ cd application
+   ~$ make import-mock-data
+   ```
+
+-->
+</section>
+</section>
+<section id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h1>
+<p>If you use TIRA in your own research, please cite our paper</p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@InProceedings</span><span class="p">{</span><span class="nl">froebe:2023b</span><span class="p">,</span>
+<span class="w">  </span><span class="na">address</span><span class="w"> </span><span class="p">=</span><span class="w">                  </span><span class="s">{Berlin Heidelberg New York}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w">                   </span><span class="s">{Maik Fr{\&quot;o}be and Matti Wiegmann and Nikolay Kolyada and Bastian Grahm and Theresa Elstner and Frank Loebe and Matthias Hagen and Benno Stein and Martin Potthast}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w">                </span><span class="s">{Advances in Information Retrieval. 45th European Conference on {IR} Research ({ECIR} 2023)}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">month</span><span class="w"> </span><span class="p">=</span><span class="w">                    </span><span class="nv">apr</span><span class="p">,</span>
+<span class="w">  </span><span class="na">publisher</span><span class="w"> </span><span class="p">=</span><span class="w">                </span><span class="s">{Springer}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">series</span><span class="w"> </span><span class="p">=</span><span class="w">                   </span><span class="s">{Lecture Notes in Computer Science}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">site</span><span class="w"> </span><span class="p">=</span><span class="w">                     </span><span class="s">{Dublin, Irland}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w">                    </span><span class="s">{{Continuous Integration for Reproducible Shared Tasks with TIRA.io}}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">todo</span><span class="w"> </span><span class="p">=</span><span class="w">                     </span><span class="s">{doi, month, pages, code}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w">                     </span><span class="m">2023</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
+<p><a class="reference internal" href="#LICENSE"><span class="xref myst">MIT License</span></a></p>
+</section>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -291,8 +390,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">I want to…</a><ul>
+<li><a class="reference internal" href="#organize-a-shared-task">… organize a shared task</a></li>
+<li><a class="reference internal" href="#deploy-my-own-instance">… deploy my own instance</a></li>
+<li><a class="reference internal" href="#join-a-shared-task">… join a shared task</a></li>
+<li><a class="reference internal" href="#contribute-bug-reports-feature-requests-code-documentation">… contribute (bug reports, feature requests, code, documentation)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#citation">Citation</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
